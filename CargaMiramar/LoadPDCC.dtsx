@@ -1,0 +1,2315 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/5/2016 11:29:45 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CL-IT00052"
+  DTS:CreatorName="GLOBANT\norman.martinez"
+  DTS:DTSID="{7DE99C52-9929-4E70-BFCA-B89C0E39AA57}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="13322"
+  DTS:ObjectName="LoadPDCC"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{F358FF41-ED2A-4AE5-B4DD-8C8522202479}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{210F5F27-5B17-48FB-A134-918B18C9696D}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::FILEPATH] + "\\PDCC.csv"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="13322"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\norman.martinez\Desktop\\PDCC.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Numero_CreditoConsumo"
+              DTS:DTSID="{C0F21048-3EB1-4EEB-A537-0375DBA87AFB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Rut_Cliente"
+              DTS:DTSID="{3A462DC5-5060-4E8D-AC1B-343DFC10FD72}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fecha_Pago"
+              DTS:DTSID="{DF31AB77-68B1-474D-8CA7-62F7209F5760}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fecha_Vencimiento"
+              DTS:DTSID="{F2B4A9C9-F665-41E6-A28E-F62B1B0BC324}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Numero_Cuota"
+              DTS:DTSID="{0FD3DE31-0004-41A0-B745-917FFC2DCC29}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total_Cuotas"
+              DTS:DTSID="{9E4B5552-8696-421C-BEEA-FE961D900ABA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Total_Cuotas_Vencidas"
+              DTS:DTSID="{C6956175-10C8-4F7E-8A6D-B41C41AD8E70}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="14"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Pago_Cuota"
+              DTS:DTSID="{1E4E97E8-3436-4FD7-ABDF-4AD7D1BFA7D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="14"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Valor_Cuota"
+              DTS:DTSID="{F8539B8F-09D0-40B1-9CC6-BC43F0E2D826}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A37EE46A-F7C4-446A-8319-18E0BC898402}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borra Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{57EBABA0-FE78-4107-87F6-F9465E80E2F0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borra Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A4FDE733-0903-4A60-B94D-7AA641C7BCD2}"
+          SQLTask:SqlStatementSource="DELETE FROM [Miramar].[dbo].[PDCC];&#xA;DELETE FROM [Miramar].[dbo].[PuntosPD];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Puntos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D3C63393-0B96-4170-883E-37BDE49AD52D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Puntos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Puntos\ActionID"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="ActionID"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\ActionID.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\ActionID.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carga Puntos\ActionID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\ActionID.Outputs[Derived Column Output].Columns[ActionID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Puntos\ActionID.Outputs[Derived Column Output].Columns[ActionID]"
+                      name="ActionID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">5</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">5</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\ActionID.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carga Puntos\ActionID.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\ActionID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\ActionID.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\ActionID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\ActionID.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Guarda Puntos"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Guarda Puntos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PuntosPD]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Puntos\Guarda Puntos.Connections[OleDbConnection]"
+                  connectionManagerID="{A4FDE733-0903-4A60-B94D-7AA641C7BCD2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[__sqlexpress.Miramar]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].Columns[Rut_Cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rut_Cliente"
+                      externalMetadataColumnId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[Rut_Cliente]"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Rut_Cliente]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].Columns[Puntos]"
+                      cachedDataType="i4"
+                      cachedName="Puntos"
+                      externalMetadataColumnId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[Puntos_Beneficio]"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Puntos]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].Columns[ActionID]"
+                      cachedDataType="i4"
+                      cachedName="ActionID"
+                      externalMetadataColumnId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[ActionID]"
+                      lineageId="Package\Carga Puntos\ActionID.Outputs[Derived Column Output].Columns[ActionID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rut_Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[Puntos_Beneficio]"
+                      dataType="i4"
+                      name="Puntos_Beneficio" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Puntos]"
+                      dataType="dbDate"
+                      name="Fecha_Puntos" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input].ExternalColumns[ActionID]"
+                      dataType="i4"
+                      name="ActionID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Guarda Puntos.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Guarda Puntos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Guarda Puntos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Guarda Puntos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Puntos 400"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Puntos 400"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\Puntos 400.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carga Puntos\Puntos 400.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Output].Columns[Puntos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Output].Columns[Puntos]"
+                      name="Puntos"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">400</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">400</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carga Puntos\Puntos 400.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Puntos 500"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Puntos 500"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\Puntos 500.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carga Puntos\Puntos 500.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Output].Columns[Puntos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Output].Columns[Puntos]"
+                      name="Puntos"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">500</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">500</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carga Puntos\Puntos 500.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Recupera Información"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Recupera Información"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PDCC]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Puntos\Recupera Información.Connections[OleDbConnection]"
+                  connectionManagerID="{A4FDE733-0903-4A60-B94D-7AA641C7BCD2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[__sqlexpress.Miramar]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_CreditoConsumo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Numero_CreditoConsumo]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_CreditoConsumo]"
+                      name="Numero_CreditoConsumo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Rut_Cliente]"
+                      length="50"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Rut_Cliente]"
+                      name="Rut_Cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Pago]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]"
+                      name="Fecha_Pago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Vencimiento]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]"
+                      name="Fecha_Vencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Numero_Cuota]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]"
+                      name="Numero_Cuota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Total_Cuotas]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]"
+                      name="Total_Cuotas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Total_CuotasVencidas]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]"
+                      name="Total_CuotasVencidas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Generación]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Generación]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Generación]"
+                      name="Fecha_Generación"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Pago_Cuota]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]"
+                      name="Pago_Cuota"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Valor_Cuota]"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]"
+                      name="Valor_Cuota"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Numero_CreditoConsumo]"
+                      dataType="i4"
+                      name="Numero_CreditoConsumo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rut_Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Pago]"
+                      dataType="dbDate"
+                      name="Fecha_Pago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      name="Fecha_Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Numero_Cuota]"
+                      dataType="i4"
+                      name="Numero_Cuota" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Total_Cuotas]"
+                      dataType="i4"
+                      name="Total_Cuotas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Total_CuotasVencidas]"
+                      dataType="i4"
+                      name="Total_CuotasVencidas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Fecha_Generación]"
+                      dataType="dbDate"
+                      name="Fecha_Generación" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Pago_Cuota]"
+                      dataType="numeric"
+                      name="Pago_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].ExternalColumns[Valor_Cuota]"
+                      dataType="numeric"
+                      name="Valor_Cuota"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Numero_CreditoConsumo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Numero_CreditoConsumo]"
+                      name="Numero_CreditoConsumo" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Rut_Cliente]"
+                      name="Rut_Cliente" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Pago]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Pago]"
+                      name="Fecha_Pago" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Vencimiento]"
+                      name="Fecha_Vencimiento" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Numero_Cuota]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Numero_Cuota]"
+                      name="Numero_Cuota" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Total_Cuotas]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Total_Cuotas]"
+                      name="Total_Cuotas" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Total_CuotasVencidas]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Total_CuotasVencidas]"
+                      name="Total_CuotasVencidas" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Pago_Cuota]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Pago_Cuota]"
+                      name="Pago_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Valor_Cuota]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Valor_Cuota]"
+                      name="Valor_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Generación]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[Fecha_Generación]"
+                      name="Fecha_Generación" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Regla"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Regla"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Total_CuotasVencidas]"
+                      cachedDataType="i4"
+                      cachedName="Total_CuotasVencidas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Fecha_Pago]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Pago"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Fecha_Vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Vencimiento"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Numero_Cuota]"
+                      cachedDataType="i4"
+                      cachedName="Numero_Cuota"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Total_Cuotas]"
+                      cachedDataType="i4"
+                      cachedName="Total_Cuotas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Valor_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Valor_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]" />
+                    <inputColumn
+                      refId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input].Columns[Pago_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Pago_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Regla.Outputs[Case 400]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 400"
+                  synchronousInputId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]} == 0) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]} &lt;= #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]}) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]} &lt; #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]}) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]} == #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(Total_CuotasVencidas == 0) &amp;&amp; (Fecha_Pago &lt;= Fecha_Vencimiento) &amp;&amp; (Numero_Cuota &lt; Total_Cuotas) &amp;&amp; (Pago_Cuota == Valor_Cuota)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Regla.Outputs[Case 500]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 500"
+                  synchronousInputId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">(#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]} == 0) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]} &lt;= #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]}) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]} == #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]}) &amp;&amp; (#{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]} == #{Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(Total_CuotasVencidas == 0) &amp;&amp; (Fecha_Pago &lt;= Fecha_Vencimiento) &amp;&amp; (Numero_Cuota == Total_Cuotas) &amp;&amp; (Pago_Cuota == Valor_Cuota)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Regla.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Puntos\Regla.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Regla.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Regla.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Regla.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Regla.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Puntos\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Numero_CreditoConsumo]"
+                      cachedDataType="i4"
+                      cachedName="Numero_CreditoConsumo"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_CreditoConsumo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_CreditoConsumo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Rut_Cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rut_Cliente"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Rut_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Rut_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Fecha_Pago]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Pago"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Pago]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Fecha_Vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Vencimiento"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Vencimiento]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Numero_Cuota]"
+                      cachedDataType="i4"
+                      cachedName="Numero_Cuota"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Total_Cuotas]"
+                      cachedDataType="i4"
+                      cachedName="Total_Cuotas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_Cuotas]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Total_CuotasVencidas]"
+                      cachedDataType="i4"
+                      cachedName="Total_CuotasVencidas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_CuotasVencidas]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Puntos]"
+                      cachedDataType="i4"
+                      cachedName="Puntos"
+                      lineageId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Output].Columns[Puntos]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Puntos]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Pago_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Pago_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 3].Columns[Valor_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Valor_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Valor_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1]"
+                  hasSideEffects="true"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Numero_CreditoConsumo]"
+                      cachedDataType="i4"
+                      cachedName="Numero_CreditoConsumo"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_CreditoConsumo]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_CreditoConsumo]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Rut_Cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rut_Cliente"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Rut_Cliente]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Rut_Cliente]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Fecha_Pago]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Pago"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Pago]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Pago]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Fecha_Vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Vencimiento"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Fecha_Vencimiento]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Vencimiento]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Numero_Cuota]"
+                      cachedDataType="i4"
+                      cachedName="Numero_Cuota"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Numero_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Total_Cuotas]"
+                      cachedDataType="i4"
+                      cachedName="Total_Cuotas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_Cuotas]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_Cuotas]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Total_CuotasVencidas]"
+                      cachedDataType="i4"
+                      cachedName="Total_CuotasVencidas"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Total_CuotasVencidas]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_CuotasVencidas]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Puntos]"
+                      cachedDataType="i4"
+                      cachedName="Puntos"
+                      lineageId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Output].Columns[Puntos]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Puntos]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Pago_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Pago_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Pago_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Carga Puntos\Union All.Inputs[Union All Input 1].Columns[Valor_Cuota]"
+                      cachedDataType="numeric"
+                      cachedName="Valor_Cuota"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      lineageId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output].Columns[Valor_Cuota]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Valor_Cuota]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Carga Puntos\Union All.Inputs[Union All Input 2]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_CreditoConsumo]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_CreditoConsumo]"
+                      name="Numero_CreditoConsumo" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Rut_Cliente]"
+                      name="Rut_Cliente" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Total]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Total]"
+                      name="Pago_Total"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Pago]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Pago]"
+                      name="Fecha_Pago" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Vencimiento]"
+                      name="Fecha_Vencimiento" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_Cuota]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Numero_Cuota]"
+                      name="Numero_Cuota" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_Cuotas]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_Cuotas]"
+                      name="Total_Cuotas" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_CuotasVencidas]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Total_CuotasVencidas]"
+                      name="Total_CuotasVencidas" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Generación]"
+                      dataType="dbDate"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Fecha_Generación]"
+                      name="Fecha_Generación" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Puntos]"
+                      dataType="i4"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Puntos]"
+                      name="Puntos" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Cuota]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Pago_Cuota]"
+                      name="Pago_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Valor_Cuota]"
+                      dataType="numeric"
+                      lineageId="Package\Carga Puntos\Union All.Outputs[Union All Output 1].Columns[Valor_Cuota]"
+                      name="Valor_Cuota"
+                      precision="18"
+                      scale="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Puntos.Paths[Case 400]"
+              endId="Package\Carga Puntos\Puntos 400.Inputs[Derived Column Input]"
+              name="Case 400"
+              startId="Package\Carga Puntos\Regla.Outputs[Case 400]" />
+            <path
+              refId="Package\Carga Puntos.Paths[Case 500]"
+              endId="Package\Carga Puntos\Puntos 500.Inputs[Derived Column Input]"
+              name="Case 500"
+              startId="Package\Carga Puntos\Regla.Outputs[Case 500]" />
+            <path
+              refId="Package\Carga Puntos.Paths[Derived Column Output]"
+              endId="Package\Carga Puntos\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Carga Puntos\Puntos 400.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carga Puntos.Paths[Derived Column Output1]"
+              endId="Package\Carga Puntos\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Carga Puntos\Puntos 500.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carga Puntos.Paths[Derived Column Output2]"
+              endId="Package\Carga Puntos\Guarda Puntos.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Carga Puntos\ActionID.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carga Puntos.Paths[OLE DB Source Output]"
+              endId="Package\Carga Puntos\Regla.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carga Puntos\Recupera Información.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Carga Puntos.Paths[Union All Output 1]"
+              endId="Package\Carga Puntos\ActionID.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Carga Puntos\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{18B3FD02-4BB5-4989-AB88-A4AC851E7DE1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Staging\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="13322"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Staging\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_CreditoConsumo]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Numero_CreditoConsumo]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_CreditoConsumo]"
+                      name="Numero_CreditoConsumo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Rut_Cliente]"
+                      length="50"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Rut_Cliente]"
+                      name="Rut_Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Pago]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fecha_Pago]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Pago]"
+                      name="Fecha_Pago"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fecha_Vencimiento]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Vencimiento]"
+                      name="Fecha_Vencimiento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_Cuota]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Numero_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_Cuota]"
+                      name="Numero_Cuota"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total_Cuotas]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas]"
+                      name="Total_Cuotas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas_Vencidas]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total_Cuotas_Vencidas]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas_Vencidas]"
+                      name="Total_Cuotas_Vencidas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Pago_Cuota]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pago_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Pago_Cuota]"
+                      name="Pago_Cuota"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Valor_Cuota]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Valor_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Valor_Cuota]"
+                      name="Valor_Cuota"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Numero_CreditoConsumo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Numero_CreditoConsumo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rut_Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fecha_Pago]"
+                      dataType="dbDate"
+                      name="Fecha_Pago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      name="Fecha_Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Numero_Cuota]"
+                      dataType="i4"
+                      name="Numero_Cuota" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total_Cuotas]"
+                      dataType="i4"
+                      name="Total_Cuotas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Total_Cuotas_Vencidas]"
+                      dataType="i4"
+                      name="Total_Cuotas_Vencidas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Pago_Cuota]"
+                      dataType="decimal"
+                      name="Pago_Cuota"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Valor_Cuota]"
+                      dataType="decimal"
+                      name="Valor_Cuota"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Staging\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[PDCC]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Staging\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{A4FDE733-0903-4A60-B94D-7AA641C7BCD2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[__sqlexpress.Miramar]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Numero_CreditoConsumo]"
+                      cachedDataType="i2"
+                      cachedName="Numero_CreditoConsumo"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Numero_CreditoConsumo]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_CreditoConsumo]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rut_Cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Rut_Cliente"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut_Cliente]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Rut_Cliente]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha_Pago]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Pago"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Pago]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Pago]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fecha_Vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="Fecha_Vencimiento"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Vencimiento]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fecha_Vencimiento]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Numero_Cuota]"
+                      cachedDataType="i1"
+                      cachedName="Numero_Cuota"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Numero_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Numero_Cuota]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total_Cuotas]"
+                      cachedDataType="i1"
+                      cachedName="Total_Cuotas"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Cuotas]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pago_Cuota]"
+                      cachedDataType="decimal"
+                      cachedName="Pago_Cuota"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pago_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Pago_Cuota]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Valor_Cuota]"
+                      cachedDataType="decimal"
+                      cachedName="Valor_Cuota"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valor_Cuota]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Valor_Cuota]" />
+                    <inputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total_Cuotas_Vencidas]"
+                      cachedDataType="i1"
+                      cachedName="Total_Cuotas_Vencidas"
+                      externalMetadataColumnId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_CuotasVencidas]"
+                      lineageId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Total_Cuotas_Vencidas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Numero_CreditoConsumo]"
+                      dataType="i4"
+                      name="Numero_CreditoConsumo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rut_Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Rut_Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Pago]"
+                      dataType="dbDate"
+                      name="Fecha_Pago" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Vencimiento]"
+                      dataType="dbDate"
+                      name="Fecha_Vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Numero_Cuota]"
+                      dataType="i4"
+                      name="Numero_Cuota" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Cuotas]"
+                      dataType="i4"
+                      name="Total_Cuotas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_CuotasVencidas]"
+                      dataType="i4"
+                      name="Total_CuotasVencidas" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pago_Cuota]"
+                      dataType="numeric"
+                      name="Pago_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Valor_Cuota]"
+                      dataType="numeric"
+                      name="Valor_Cuota"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fecha_Generación]"
+                      dataType="dbDate"
+                      name="Fecha_Generación" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Staging.Paths[Flat File Source Output]"
+              endId="Package\Carga Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Carga Staging\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B5E36EE2-F2FD-443C-B1E7-84D4B22157B9}"
+      DTS:From="Package\Carga Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga Puntos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CE399500-376A-4986-AB74-7E1D6FA98D9B}"
+      DTS:From="Package\Borra Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Carga Staging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Borra Staging"
+          TopLeft="216,28" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Carga Puntos"
+          TopLeft="213,161" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Carga Staging"
+          TopLeft="215,93" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="285.75,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="287.5,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga Puntos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Carga Puntos\Puntos 500"
+          TopLeft="500,194.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Carga Puntos\Union All"
+          TopLeft="348.075,261" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Carga Puntos\Recupera Información"
+          TopLeft="317.075,45" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Carga Puntos\Puntos 400"
+          TopLeft="218.125,194.5" />
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Carga Puntos\Regla"
+          TopLeft="356.075,122" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Carga Puntos\Guarda Puntos"
+          TopLeft="334.575,423" />
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Derived Column Output1]"
+          TopLeft="566,236.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-138.591666666667,24.5"
+              Start="0,0"
+              End="-138.591666666667,17">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5081566068515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5081566068515"
+                    Point2="0,14.5081566068515"
+                    Point3="-4,14.5081566068515" />
+                  <mssgle:LineSegment
+                    End="-134.591666666667,14.5081566068515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-134.591666666667,14.5081566068515"
+                    Point2="-138.591666666667,14.5081566068515"
+                    Point3="-138.591666666667,18.5081566068515" />
+                  <mssgle:LineSegment
+                    End="-138.591666666667,17" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Derived Column Output]"
+          TopLeft="284.125,236.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.616666666667,24.5"
+              Start="0,0"
+              End="105.616666666667,17">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5081566068515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5081566068515"
+                    Point2="0,14.5081566068515"
+                    Point3="4,14.5081566068515" />
+                  <mssgle:LineSegment
+                    End="101.616666666667,14.5081566068515" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.616666666667,14.5081566068515"
+                    Point2="105.616666666667,14.5081566068515"
+                    Point3="105.616666666667,18.5081566068515" />
+                  <mssgle:LineSegment
+                    End="105.616666666667,17" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Case 500]"
+          TopLeft="424.741666666667,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="141.258333333333,30.5"
+              Start="0,0"
+              End="141.258333333333,23">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.47467166979362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.47467166979362"
+                    Point2="0,12.4746716697936"
+                    Point3="4,12.4746716697936" />
+                  <mssgle:LineSegment
+                    End="137.258333333333,12.4746716697936" />
+                  <mssgle:CubicBezierSegment
+                    Point1="137.258333333333,12.4746716697936"
+                    Point2="141.258333333333,12.4746716697936"
+                    Point3="141.258333333333,16.4746716697936" />
+                  <mssgle:LineSegment
+                    End="141.258333333333,23" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="49.7484440104167,17.4746716697936,41.7614453125,9.568359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Case 400]"
+          TopLeft="392.408333333333,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-108.283333333333,30.5"
+              Start="0,0"
+              End="-108.283333333333,23">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.47467166979362" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.47467166979362"
+                    Point2="0,12.4746716697936"
+                    Point3="-4,12.4746716697936" />
+                  <mssgle:LineSegment
+                    End="-104.283333333333,12.4746716697936" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104.283333333333,12.4746716697936"
+                    Point2="-108.283333333333,12.4746716697936"
+                    Point3="-108.283333333333,16.4746716697936" />
+                  <mssgle:LineSegment
+                    End="-108.283333333333,23" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-75.0223893229167,17.4746716697936,41.7614453125,9.568359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[OLE DB Source Output]"
+          TopLeft="408.575,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Carga Puntos\ActionID"
+          TopLeft="349.075,337" />
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Union All Output 1]"
+          TopLeft="408.575,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga Puntos.Paths[Derived Column Output2]"
+          TopLeft="408.575,379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Puntos\Recupera Información">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Puntos\Guarda Puntos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Carga Staging\Flat File Source"
+          TopLeft="167,36" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Carga Staging\OLE DB Destination"
+          TopLeft="158,127" />
+        <EdgeLayout
+          Id="Package\Carga Staging.Paths[Flat File Source Output]"
+          TopLeft="243,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
